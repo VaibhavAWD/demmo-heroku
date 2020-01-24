@@ -1,8 +1,11 @@
 <?php
 
 require '../libs/vendor/autoload.php';
+require '../include/util/Helper.php';
 
 $app = new Slim\App();
+
+$message = array();
 
 $app->post('/hello/{name}', function ($request, $response, $args) {
     $name = $args['name'];
