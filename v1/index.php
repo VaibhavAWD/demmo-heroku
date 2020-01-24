@@ -1,7 +1,9 @@
 <?php
 
 require '../libs/vendor/autoload.php';
-require '../include/util/Helper.php';
+require_once '../include/util/Helper.php';
+require_once '../include/db/DbOperations.php';
+require_once '../include/controller/UserController.php';
 
 $app = new Slim\App();
 
@@ -22,6 +24,12 @@ $app->post('/conncheck', function ($request, $response, $args) {
         return $response->write($message);
     }
 });
+
+/* ------------------------------------------- USERS ----------------------------------------------- */
+
+$app->post('/register', \UserController::class . ':register');
+
+/* ------------------------------------------- USERS ----------------------------------------------- */
 
 $app->run();
 
